@@ -1,11 +1,10 @@
-# Entities
 Item: Item
 ItemDescription: Beskrivelse
 ItemCategory: Kategori
-
-# Entity fields
 Categories: Kategorier
 Category: Kategori
 Description: Beskrivelse
 Name: Navn
 Icon: Ikon
+Administration: Administration
+'API documentation': 'Api-dokumentation'
