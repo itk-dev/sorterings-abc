@@ -20,6 +20,8 @@ Encore
     .addEntry('admin', './assets/js/admin.js')
     .addEntry('app', './assets/js/app.js')
 
+    .enableVueLoader()
+
     /*
      * FEATURE CONFIG
      *
