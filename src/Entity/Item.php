@@ -14,11 +14,13 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
  *     collectionOperations={"get"},
- *     itemOperations={"get"}
+ *     itemOperations={"get"},
+ *     normalizationContext={"groups"={"item_read"}},
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
  */
@@ -33,17 +35,23 @@ class Item
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups({"item_read"})
      */
     private $name;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ItemDescription", inversedBy="items")
      * @ORM\JoinColumn(nullable=false)
+     *
+     * @Groups({"item_read"})
      */
     private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\ItemCategory", inversedBy="items")
+     *
+     * @Groups({"item_read"})
      */
     private $categories;
 
