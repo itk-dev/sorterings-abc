@@ -1,0 +1,5 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set route_query = app.request.query.all %}
+{% set edit_url = path(route, route_query|merge({action: 'show', 'id': item.id})) %}
+
+<a href="{{ edit_url }}">{{ value }}</a>

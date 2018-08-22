@@ -1,0 +1,65 @@
+easy_admin:
+    site_name: '%site_name%'
+    design:
+        assets:
+            favicon: 'build/images/favicon.ico'
+
+    entities:
+        Item:
+            class: App\Entity\Item
+            list:
+                fields:
+                    - property: name
+                      template: name.html.twig
+                    - property: description
+                    - property: categories
+            show:
+                fields:
+                    - property: name
+                    - property: description
+                    - property: categories
+            form:
+                fields:
+                    - property: name
+                    - property: description
+                    - property: categories
+
+        ItemDescription:
+            class: App\Entity\ItemDescription
+            label: 'Description'
+            list:
+                fields:
+                    - property: name
+                      template: name.html.twig
+                    - property: description
+            show:
+                fields:
+                    - property: name
+                    - property: description
+                    - property: items
+            form:
+                fields:
+                    - property: name
+                    - property: description
+
+        ItemCategory:
+            class: App\Entity\ItemCategory
+            label: 'Category'
+            list:
+                fields:
+                    - property: name
+                      template: name.html.twig
+                    - property: description
+                    - property: icon
+                      template: icon.html.twig
+            show:
+                fields:
+                    - property: name
+                    - property: description
+                    - property: icon
+                    - property: items
+            form:
+                fields:
+                    - property: name
+                    - property: description
+                    - property: icon
