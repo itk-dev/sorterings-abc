@@ -41,6 +41,7 @@ easy_admin:
                 fields:
                     - property: name
                     - property: description
+                      type: 'FOS\CKEditorBundle\Form\Type\CKEditorType'
 
         ItemCategory:
             class: App\Entity\ItemCategory
@@ -62,4 +63,5 @@ easy_admin:
                 fields:
                     - property: name
                     - property: description
+                      type: 'FOS\CKEditorBundle\Form\Type\CKEditorType'
                     - property: icon
