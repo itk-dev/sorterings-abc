@@ -1,11 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="container-fluid">
-        <h1>{{ site_name }}</h1>
+    <h1>{{ site_name }}</h1>
 
-        <a class="btn btn-primary btn-block" href="{{ path('easyadmin') }}">{{ 'Administration'|trans }}</a>
-        <a class="btn btn-secondary btn-block" href="{{ path('api_doc') }}">{{ 'API documentation'|trans }}</a>
-        <a class="btn btn-success btn-block" href="{{ path('app') }}">{{ 'App'|trans }}</a>
-    </div>
+    <a class="btn btn-primary btn-block" href="{{ path('easyadmin') }}">{{ 'Administration'|trans }}</a>
+    <a class="btn btn-secondary btn-block" href="{{ path('api_doc') }}">{{ 'API documentation'|trans }}</a>
+    <a class="btn btn-success btn-block" href="{{ path('app') }}">{{ 'App'|trans }}</a>
 {% endblock %}
