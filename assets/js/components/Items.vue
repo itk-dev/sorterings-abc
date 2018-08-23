@@ -8,6 +8,10 @@
             {{ $t('Loading items …') }}
         </div>
 
+        <div class="alert alert-danger" v-if="error">
+            {{ error }}
+        </div>
+
         <div class="alert alert-warning" v-if="items && items.length === 0">
             {{ $t('No items starting with "{name}"', {name: query.name}) }}
         </div>
