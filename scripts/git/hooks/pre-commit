@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Rebuilt assets if js or scss files are changed.
+if git status --short | grep '^M.*\.\(scs\|j\)s$'; then
+  yarn encore production
+  git add public/build/
+fi
+
+if ! composer check-coding-standards; then
+  cat >&2 << EOF
+Please fix any coding standards issues before commit'ing!
+EOF
+  exit 87
+fi
+
+exit 0
