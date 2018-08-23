@@ -5,7 +5,7 @@
 Copy `.env.dist` to `.env` and edit to match your setup.
 
 ```sh
-composer install
+composer install --no-dev --optimize-autoloader
 bin/console doctrine:database:create
 bin/console doctrine:migrations:migrate --no-interaction
 ```
@@ -18,8 +18,26 @@ bin/console fos:user:create admin admin@example.com admin-password
 bin/console fos:user:promote admin ROLE_ADMIN
 ```
 
-Build assets
+## Development
+
+```sh
+composer install
+```
+
+### Building assets
+
+```sh
+yarn encore production
+```
+
+During development:
 
 ```sh
 yarn encore dev --watch
+```
+
+### Translations
+
+```sh
+bin/console translation:update da --force
 ```

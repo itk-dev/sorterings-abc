@@ -7,6 +7,7 @@ parameters:
     env(SITE_NAME): 'Sorterings-ABC'
     locale: 'da'
     site_name: '%env(SITE_NAME)%'
+    api_version: '1.0.0'
 
 services:
     # default configuration for services in *this* file

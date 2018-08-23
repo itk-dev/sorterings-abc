@@ -1,3 +1,6 @@
 api_platform:
+    title: '%site_name%'
+    version: '%api_version%'
+
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']

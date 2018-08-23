@@ -1,24 +1,26 @@
 <template>
     <div class="items">
-        <input placeholder="Search …" v-model="query.name" v-on:keyup="fetchData" style="display: inline-block; width: 100%; padding: 1em; margin-bottom: 1em"/>
+        <div class="form-group">
+            <input class="form-control" v-bind:placeholder="$t('Search …')" v-model="query.name" v-on:keyup="fetchData"/>
+        </div>
 
-        <div class="loading" v-if="loading">{{ $t('Loading items …') }}</div>
+        <div class="alert alert-info" v-if="loading">{{ $t('Loading items …') }}</div>
 
-        <div v-if="items && items.length === 0">
-            No items starting with "{{ query.name }}"
+        <div class="alert alert-warning" v-if="items && items.length === 0">
+            {{ $t('No items starting with "{name}"', {name: query.name}) }}
         </div>
 
         <div v-if="items" class="list-group-item item" v-for="(item, index) in items" v-bind:key="item.id">
             <div class="name">{{ item.name }}</div>
 
-            <div v-if="item.description" style="border: solid 1px red; margin: 1em 0; padding: 1em">
+            <div v-if="item.description">
                 <div class="description">
                     <div class="name">{{ item.description.name }}</div>
                     <div class="description">{{ item.description.description }}</div>
                 </div>
             </div>
 
-            <div v-if="item.categories" v-for="(category, index) in item.categories" v-bind:key="category['@id']" style="border: solid 1px blue; margin: 1em 0; padding: 1em">
+            <div v-if="item.categories" v-for="(category, index) in item.categories" v-bind:key="category['@id']">
                 <div class="category">
                     <div class="name">{{ category.name }}</div>
                     <div class="description">{{ category.description }}</div>

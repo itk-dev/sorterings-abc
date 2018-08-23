@@ -12,6 +12,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -23,8 +24,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={"get"},
  *     itemOperations={"get"},
  *     normalizationContext={"groups"={"item_read"}},
+ *     attributes={"order"={"name"}}
  * )
  * @ApiFilter(SearchFilter::class, properties={"name": "start"})
+ * @ApiFilter(OrderFilter::class, properties={"name": "ASC"})
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
  */
 class Item

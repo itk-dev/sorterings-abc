@@ -6,10 +6,14 @@ Vue.use(VueI18n)
 
 const messages = {
   da: {
-    'Loading items …': 'Henter items …'
+    'Search …': 'Søg …',
+    'Loading items …': 'Henter items …',
+    'No items starting with "{name}"': 'Ingen items starter med {name}'
   },
   en: {
-    'Loading items …': 'Loading items …'
+    'Search …': 'Search …',
+    'Loading items …': 'Loading items …',
+    'No items starting with "{name}"': 'No items starting with "{name}"'
   }
 }
 

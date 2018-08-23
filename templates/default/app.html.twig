@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>{{ site_name }}</title>
+        <link rel="stylesheet" href="{{ asset('build/app.css') }}"/>
+    </head>
+    <body>
+        {% set app_configuration = {
+            data_url: path('api_items_get_collection')
+            } %}
+        <div id="sorteringsabc-app" data-configuration="{{ app_configuration|json_encode }}"></div>
+        <script src="{{ asset('build/app.js') }}"></script>
+    </body>
+</html>
