@@ -1,32 +1,35 @@
 <template>
-    <div class="items">
+    <div class="sorteringsabc-items">
         <div class="form-group">
             <input class="form-control" v-bind:placeholder="$t('Search …')" v-model="query.name" v-on:keyup="fetchData"/>
         </div>
 
-        <div class="alert alert-info" v-if="loading">{{ $t('Loading items …') }}</div>
+        <div class="alert alert-info" v-if="loading">
+            {{ $t('Loading items …') }}
+        </div>
 
         <div class="alert alert-warning" v-if="items && items.length === 0">
             {{ $t('No items starting with "{name}"', {name: query.name}) }}
         </div>
 
-        <div v-if="items" class="list-group-item item" v-for="(item, index) in items" v-bind:key="item.id">
-            <div class="name">{{ item.name }}</div>
+        <article class="sorteringsabc-item" v-if="items" v-for="(item, index) in items" v-bind:key="item.id">
+            <div class="sorteringsabc-name">{{ item.name }}</div>
 
-            <div v-if="item.description">
-                <div class="description">
-                    <div class="name">{{ item.description.name }}</div>
-                    <div class="description">{{ item.description.description }}</div>
+            <section v-if="item.description">
+                <div class="sorteringsabc-item-description">
+                    <div class="sorteringsabc-name">{{ item.description.name }}</div>
+                    <div class="sorteringsabc-description" v-html="item.description.description"></div>
                 </div>
-            </div>
+            </section>
 
             <div v-if="item.categories" v-for="(category, index) in item.categories" v-bind:key="category['@id']">
-                <div class="category">
-                    <div class="name">{{ category.name }}</div>
-                    <div class="description">{{ category.description }}</div>
-                </div>
+                <section class="sorteringsabc-item-category">
+                    <span class="sorteringsabc-icon" v-bind:data-icon="category.icon"></span>
+                    <div class="sorteringsabc-name">{{ category.name }}</div>
+                    <div class="sorteringsabc-description" v-html="category.description"></div>
+                </section>
             </div>
-        </div>
+        </article>
     </div>
 </template>
 

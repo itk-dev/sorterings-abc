@@ -1,1 +1,21 @@
 @import "~bootstrap/scss/bootstrap";
+
+$prefix: 'sorteringsabc';
+
+.#{$prefix}-items {
+    .#{$prefix}-item {
+        padding: 1em;
+        margin: 1em 0;
+    }
+
+    .#{$prefix}-item-description,
+    .#{$prefix}-item-category {
+        border: solid 1px #eee;
+        padding: 1em;
+        margin: 1em 0;
+    }
+
+    .#{$prefix}-name {
+        font-weight: bold;
+    }
+}
