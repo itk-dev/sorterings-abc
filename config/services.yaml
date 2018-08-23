@@ -8,6 +8,10 @@ parameters:
     locale: 'da'
     site_name: '%env(SITE_NAME)%'
     api_version: '1.0.0'
+    icon_choices:
+        genbrugsbeholder: genbrugsbeholder
+        restaffald: restaffald
+        genbrugsplads: genbrugsplads
 
 services:
     # default configuration for services in *this* file

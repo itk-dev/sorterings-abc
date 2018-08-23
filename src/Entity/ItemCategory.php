@@ -43,6 +43,8 @@ class ItemCategory
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
+     * @Groups({"item_read"})
      */
     private $icon;
 
@@ -83,7 +85,7 @@ class ItemCategory
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(string $description = null): self
     {
         $this->description = $description;
 
