@@ -11,7 +11,13 @@
         {% set app_configuration = {
             data_url: path('api_items_get_collection')
             } %}
-        <div id="sorteringsabc-app" data-configuration="{{ app_configuration|json_encode }}"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="sorteringsabc-app" data-configuration="{{ app_configuration|json_encode }}"></div>
+                </div>
+            </div>
+        </div>
         <script src="{{ asset('build/app.js') }}"></script>
     </body>
 </html>

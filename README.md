@@ -25,15 +25,6 @@ bin/console fos:user:create admin@example.com admin@example.com admin-password
 bin/console fos:user:promote admin ROLE_ADMIN
 ```
 
-## Updating
-
-`git pull` latest changes and run
-
-```sh
-composer install --no-dev --optimize-autoloader
-bin/console doctrine:migrations:migrate --no-interaction
-```
-
 ## Development
 
 Copy `.env.dist` to `.env` and edit to match your setup.
@@ -53,6 +44,14 @@ bin/console server:run
 and go to [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
 
 ### Building assets
+
+Install yarn packages:
+
+```sh
+yarn install
+```
+
+Build for production:
 
 ```sh
 yarn encore production
