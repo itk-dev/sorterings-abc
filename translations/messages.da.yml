@@ -1,4 +1,4 @@
-Item: Item
+Item: Søgeord
 ItemDescription: Beskrivelse
 ItemCategory: Kategori
 Categories: Kategorier
@@ -10,3 +10,4 @@ Icon: Ikon
 Administration: Administration
 'API documentation': Api-dokumentation
 App: App
+'Embed code': Indlejringskode
