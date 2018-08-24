@@ -11,6 +11,9 @@
             "ref": "18727d8f229306860b46955f438e1897421da689"
         }
     },
+    "behat/transliterator": {
+        "version": "v1.2.0"
+    },
     "composer/semver": {
         "version": "1.4.2"
     },
@@ -122,6 +125,12 @@
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
     },
+    "gedmo/doctrine-extensions": {
+        "version": "v2.4.36"
+    },
+    "itk-dev/database-bundle": {
+        "version": "1.2.0"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
@@ -187,6 +196,15 @@
     },
     "squizlabs/php_codesniffer": {
         "version": "3.3.1"
+    },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
+        }
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.1.2"

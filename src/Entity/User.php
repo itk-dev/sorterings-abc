@@ -12,6 +12,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Blameable\Traits\BlameableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity
@@ -19,6 +21,9 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+    use TimestampableEntity;
+    use BlameableEntity;
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
