@@ -48,6 +48,7 @@
 <script>
 // https://codeburst.io/dependency-injection-with-vue-js-f6b44a0dae6d
 import Vue from 'vue'
+const querystring = require('querystring')
 
 Vue.mixin({
   beforeCreate () {
@@ -77,7 +78,11 @@ export default {
   },
   methods: {
     fetchData () {
-      const url = this.$config.data_url + '?name=' + this.query.name;
+      let url = this.$config.data_url
+      if (this.query) {
+        url += (url.indexOf('?') < 0 ? '?' : '&')
+          +querystring.stringify(this.query);
+      }
 
       this.error = this.items = null
       this.loading = true
