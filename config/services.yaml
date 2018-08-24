@@ -12,6 +12,10 @@ parameters:
         genbrugsbeholder: genbrugsbeholder
         restaffald: restaffald
         genbrugsplads: genbrugsplads
+    # Assets for use in app
+    app_assets:
+        search: build/images/search.svg
+        stuff: build/images/stuff.svg
 
 services:
     # default configuration for services in *this* file

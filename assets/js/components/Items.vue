@@ -3,7 +3,7 @@
         <div class="col mt-4">
             <div class="input-group sorteringsabc-items-search">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="input-search"><img src='' v-bind:alt="$t('Search')"></span>
+                    <span class="input-group-text" id="input-search"><img v-bind:src='$config.assets.search' v-bind:alt="$t('Search')"></span>
                 </div>
                 <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Search …')" v-model="query.name" v-on:keyup="fetchData">
             </div>

@@ -12,6 +12,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -22,9 +23,13 @@ class AppController extends AbstractController
     /** @var \Symfony\Component\Asset\Packages */
     private $packages;
 
-    public function __construct(Packages $packages)
+    /** @var \Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface */
+    private $parameters;
+
+    public function __construct(Packages $packages, ParameterBagInterface $parameters)
     {
         $this->packages = $packages;
+        $this->parameters = $parameters;
     }
 
     /**
@@ -32,7 +37,14 @@ class AppController extends AbstractController
      */
     public function app()
     {
-        return $this->render('app/app.html.twig');
+        $assets = array_map(
+            [$this->packages, 'getUrl'],
+            $this->parameters->get('app_assets')
+        );
+
+        return $this->render('app/app.html.twig', [
+            'assets' => $assets,
+        ]);
     }
 
     /**
