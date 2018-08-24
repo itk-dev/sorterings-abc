@@ -37,10 +37,10 @@ class AppController extends AbstractController
      */
     public function app()
     {
-        $assets = array_map(
-            [$this->packages, 'getUrl'],
-            $this->parameters->get('app_assets')
-        );
+        $assets = $this->parameters->get('app_assets');
+        array_walk_recursive($assets, function (&$path, $key) {
+            $path = $this->packages->getUrl($path);
+        });
 
         return $this->render('app/app.html.twig', [
             'assets' => $assets,
