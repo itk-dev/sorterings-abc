@@ -8,12 +8,16 @@ easy_admin:
         Item:
             class: App\Entity\Item
             list:
+                sort: ['name', 'ASC']
                 fields:
                     - property: name
                       template: name.html.twig
                     - property: shortDescription
                     - property: description
                     - property: categories
+                      template: categories.html.twig
+            search:
+                fields: ['name', 'description.name', 'categories.name']
             show:
                 fields:
                     - property: name
@@ -31,6 +35,7 @@ easy_admin:
             class: App\Entity\ItemDescription
             label: 'Description'
             list:
+                sort: ['name', 'ASC']
                 fields:
                     - property: name
                       template: name.html.twig
@@ -50,6 +55,7 @@ easy_admin:
             class: App\Entity\ItemCategory
             label: 'Category'
             list:
+                sort: ['name', 'ASC']
                 fields:
                     - property: name
                       template: name.html.twig

@@ -1,0 +1,7 @@
+{%- for category in value -%}
+    {% set show_url = path('easyadmin', {action: 'show', entity: 'ItemCategory', id: category.id, referer: app.request.requestUri}) %}
+    {%- if not loop.first %}, {% endif -%}
+    <a href="{{ show_url }}">{{ category.name }}</a>
+{%- else -%}
+    {{ '–' }}
+{%- endfor -%}
