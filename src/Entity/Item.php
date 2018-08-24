@@ -26,7 +26,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     normalizationContext={"groups"={"item_read"}},
  *     attributes={"order"={"name"}}
  * )
- * @ApiFilter(SearchFilter::class, properties={"name": "start"})
+ * @ApiFilter(SearchFilter::class, properties={"name": "partial"})
  * @ApiFilter(OrderFilter::class, properties={"name": "ASC"})
  * @ORM\Entity(repositoryClass="App\Repository\ItemRepository")
  */
@@ -42,9 +42,16 @@ class Item
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Groups({"item_read"})
+     * @Groups({"item_read", "item_description_read", "item_category_read"})
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     *
+     * @Groups({"item_read", "item_description_read", "item_category_read"})
+     */
+    private $shortDescription;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ItemDescription", inversedBy="items")
@@ -84,6 +91,18 @@ class Item
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(?string $shortDescription): self
+    {
+        $this->shortDescription = $shortDescription;
 
         return $this;
     }

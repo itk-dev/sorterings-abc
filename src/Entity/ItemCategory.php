@@ -10,12 +10,24 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
+ * @ApiResource(
+ *     collectionOperations={"get"},
+ *     itemOperations={"get"},
+ *     normalizationContext={"groups"={"item_category_read"}},
+ *     attributes={"order"={"name"}}
+ * )
+ * @ApiFilter(SearchFilter::class, properties={"name": "partial"})
+ * @ApiFilter(OrderFilter::class, properties={"name": "ASC"})
  * @ORM\Entity(repositoryClass="App\Repository\ItemCategoryRepository")
  */
 class ItemCategory
@@ -30,26 +42,28 @@ class ItemCategory
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Groups({"item_read"})
+     * @Groups({"item_read", "item_category_read"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      *
-     * @Groups({"item_read"})
+     * @Groups({"item_read", "item_category_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
      *
-     * @Groups({"item_read"})
+     * @Groups({"item_read", "item_category_read"})
      */
     private $icon;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Item", mappedBy="categories")
+     *
+     * @Groups({"item_category_read"})
      */
     private $items;
 

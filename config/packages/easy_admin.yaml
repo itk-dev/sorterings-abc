@@ -11,16 +11,19 @@ easy_admin:
                 fields:
                     - property: name
                       template: name.html.twig
+                    - property: shortDescription
                     - property: description
                     - property: categories
             show:
                 fields:
                     - property: name
+                    - property: shortDescription
                     - property: description
                     - property: categories
             form:
                 fields:
                     - property: name
+                    - property: shortDescription
                     - property: description
                     - property: categories
 
