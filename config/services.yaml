@@ -9,9 +9,10 @@ parameters:
     site_name: '%env(SITE_NAME)%'
     api_version: '1.0.0'
     icon_choices:
-        genbrugsbeholder: genbrugsbeholder
-        restaffald: restaffald
-        genbrugsplads: genbrugsplads
+        icon_restaffald: icon_restaffald
+        icon_genbrugsbeholder_papir_pap: icon_genbrugsbeholder_papir_pap
+        icon_genbrugsbeholder_glas_plast_metal: icon_genbrugsbeholder_glas_plast_metal
+        icon_genbrugsstation: icon_genbrugsstation
     # Assets for use in app
     app_assets:
         search: build/images/search.svg

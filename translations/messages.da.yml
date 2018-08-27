@@ -21,3 +21,8 @@ Password: Adgangskode
 ROLE_USER: Bruger
 ROLE_ADMIN: Administrator
 ROLE_SUPER_ADMIN: Superadministrator
+
+icon_restaffald: Restaffald
+icon_genbrugsbeholder_papir_pap: Papir, småt pap
+icon_genbrugsbeholder_glas_plast_metal: Glas, plast, metal
+icon_genbrugsstation: Genbrugsstation
