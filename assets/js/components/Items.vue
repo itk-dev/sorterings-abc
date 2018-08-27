@@ -4,68 +4,85 @@
         <!--
         Dummy header only for testing purpose
         -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row bg-primary">
-                <div class="col-md-12">
-                    <h1 class="text-white mt-4 mb-4">SORTERINGS ABC</h1>
+                <div class="container">
+                    <div class="col-md-12">
+                        <h1 class="text-white mt-4 mb-4">SORTERINGS ABC</h1>       
+                    </div>
                 </div>
-                <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Search …')" v-model="query.name" v-on:keyup="fetchItems">
             </div>
         </div>
         <!--
         END header
         -->
 
-        <div class="container">
+        <div class="container-fluid">
             <div class="row bg-petroleum-light">
-                <div class="col-md-12 mt-4 mb-3">
-                    <div class="input-group sorteringsabc-items-search">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="input-search"><img v-bind:src='$config.assets.search' v-bind:alt="$t('Search')">{{ $t('Search') }}</span>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mt-4 mb-3">
+                            <div class="input-group sorteringsabc-items-search">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="input-search"><img v-bind:src='$config.assets.search' v-bind:alt="$t('Search')">{{ $t('Search') }}</span>
+                                </div>
+                                <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Write garbagetype fx spray can')" v-model="query.name" v-on:keyup="fetchItems">
+                            </div>
                         </div>
-                        <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Write garbagetype fx spray can')" v-model="query.name" v-on:keyup="fetchItems">
+                        
                     </div>
-                </div>
-                <div class="col-md-12 mt-1">
-                    <div class="alert alert-primary" v-if="loading">
-                        {{ $t('Loading items …') }}
-                    </div>
-
-                    <div class="alert alert-danger" v-if="error">
-                        {{ error }}
-                    </div>
-
-                    <div class="alert alert-light" v-if="items && items.length === 0">
-                        <h4 class="alert-heading">{{ $t('No items starting with "{name}"', {name: query.name}) }}</h4>
-                        <p>{{ $t('Please consider adding the missing keyword to this list') }}</p>
-                        <button href="#TODO-add-url-to-new-keyword-form" class="btn btn-primary btn-small">{{ $t('Add a missing keyword') }}</button>
+                    <div class="row">
+                        <div class="col-md-12 mt-1">
+                            <div class="alert alert-primary" v-if="loading">
+                                {{ $t('Loading items …') }}
+                            </div>
+                            <div class="alert alert-danger" v-if="error">
+                                {{ error }}
+                            </div>
+                            <div class="alert alert-light" v-if="items && items.length === 0">
+                                <h4 class="alert-heading">{{ $t('No items starting with "{name}"', {name: query.name}) }}</h4>
+                                <p>{{ $t('Please consider adding the missing keyword to this list') }}</p>
+                                <button href="https://www2.aarhus.dk/affaldvarme/affald-og-genbrug/sortering-derhjemme/sorteringsguide/giv-os-feedback/" class="btn btn-primary btn-small">{{ $t('Add a missing keyword') }}</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row bg-gray-light pb-3">
-                <div class="col-md-12">
-                    <p class="text-muted mb-1 mt-1" v-if="items" >{{ $t('Results') }} ({{ items.length }})</p>
-                </div>
-                <div class="col-md-12 sorteringsabc-item mb-3" v-if="items" v-for="(item, index) in items" v-bind:key="item.id">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ item.name }}</h3>
-                            <span class="badge badge-primary">{{ item.description.name }}</span>
-                            <p class="card-text" v-if="item.description">
-                                <span v-html="item.description.description"></span>
-                            </p>
-                            <div class="row">
-                                <div v-if="item.allCategories" v-for="(category, index) in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2">
-                                    <a v-bind:href="'#'+item.id+category.name" data-toggle="collapse" aria-expanded="false" v-bind:class="{active: category.active}">
-                                        <img class="sorteringsabc-items-icon img-fluid" v-bind:class="category.icon" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
-                                    </a>
-                                    <div class="collapse" v-bind:id="item.id+category.name">
-                                        <h4>{{ category.name }}</h4>
-                                        <div class="sorteringsabc-description" v-html="category.description"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="text-muted mb-1 mt-1" v-if="items" >{{ $t('Results') }} ({{ items.length }})</p>
+                        </div>
+                        <div class="col-md-12 sorteringsabc-item mb-3" v-if="items" v-for="item in items" v-bind:key="item.id">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3 class="card-title">{{ item.name }}</h3>
+                                        </div>
+                                        <div class="col">
+                                            <span class="badge badge-primary float-right">{{ item.description.name }}</span>
+                                        </div>
                                     </div>
+                                    <p class="card-text" v-if="item.description">                     
+                                        <span v-html="item.description.description"></span>
+                                    </p>
+                                    <div class="row">
+                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2"> 
+                                            <a v-bind:href="'#'+item.id+category.name" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">
+                                                <img class="sorteringsabc-items-icon img-fluid" v-bind:class="category.icon" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
+                                            </a>
+                                            <div class="collapse" v-bind:id="item.id+category.name">
+                                                <h4>{{ category.name }}</h4>
+                                                <div class="sorteringsabc-description" v-html="category.description">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-muted mt-2 mb-0">{{ $t('Click on icon to see extended description') }}</p>
                                 </div>
                             </div>
-                            <p class="text-muted mt-2 mb-0">{{ $t('Click on icon to see extended description') }}</p>
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,6 @@
 /*
 ** Bootstrap variables override and import
 */
-/* Set container max widths only on lg and xl to utilize more of the screen on small devices */
-$container-max-widths: (
-  lg: 960px,
-  xl: 1140px
-);
 
 /* stylelint-disable color-no-hex */
 $white:    #fff;
@@ -124,7 +119,7 @@ $prefix: 'sorteringsabc';
             background-color: darken($petroleum-light, 10%);
             border-width: 0;
             padding: 0 $spacer/2;
-            color: $dark;
+            color: $gray-900;
             img {
                 width: 1.5rem;
             }
