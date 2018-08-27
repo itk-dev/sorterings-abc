@@ -8,7 +8,7 @@
             <div class="row bg-primary">
                 <div class="container">
                     <div class="col-md-12">
-                        <h1 class="text-white mt-4 mb-4">SORTERINGS ABC</h1>       
+                        <h1 class="text-white mt-4 mb-4">SORTERINGS ABC</h1>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                                 <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Write garbagetype fx spray can')" v-model="query.name" v-on:keyup="fetchItems">
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col-md-12 mt-1">
@@ -65,15 +65,15 @@
                                             <span class="badge badge-primary float-right">{{ item.description.name }}</span>
                                         </div>
                                     </div>
-                                    <p class="card-text" v-if="item.description">                     
+                                    <p class="card-text" v-if="item.description">
                                         <span v-html="item.description.description"></span>
                                     </p>
                                     <div class="row">
-                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2 categories"> 
-                                            <a v-bind:href="'#'+item.id+category.name" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">
+                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2 categories">
+                                            <a v-bind:href="'#'+getUniqueId(item.name, category.name)" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">
                                                 <img class="sorteringsabc-items-icon img-fluid" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
                                             </a>
-                                            <div class="collapse" v-bind:id="item.id+category.name">
+                                            <div class="collapse" v-bind:id="getUniqueId(item.name, category.name)">
                                                 <h4>{{ category.name }}</h4>
                                                 <div class="sorteringsabc-description" v-html="category.description">
                                                 </div>
@@ -141,6 +141,14 @@ export default {
       .catch(error => { self.setData(error, null) })
   },
   methods: {
+    // Get a unique element id consisting of only letters and digits
+    // (e.g. needed for "collapse") and starting with a letter.
+    getUniqueId (...names) {
+      let id = names.join('--').replace(/[^a-z0-9]+/g, '-');
+
+      // Make sure that id starts with a letter.
+      return /^[^a-z]/i.test(id) ? 'c--'+id : id;
+    },
     fetchItems () {
       let url = this.$config.data_urls.items
       if (this.query) {
