@@ -64,7 +64,7 @@ Vue.mixin({
 // @TODO: Get this from API in the right order.
 const allCategories = [
   {
-    "icon": "",
+    "icon": "icon_restaffald",
     "description": "",
     "name": "Restaffald",
     "@type": "ItemCategory",
@@ -72,7 +72,7 @@ const allCategories = [
     "active": false
   },
   {
-    "icon": "",
+    "icon": "icon_genbrugsbeholder_papir_pap",
     "description": "",
     "name": "Papir og småt pap",
     "@type": "ItemCategory",
@@ -80,7 +80,7 @@ const allCategories = [
     "active": false
   },
   {
-    "icon": "",
+    "icon": "icon_genbrugsbeholder_glas_plast_metal",
     "description": "",
     "name": "Glas plast metal",
     "@type": "ItemCategory",
