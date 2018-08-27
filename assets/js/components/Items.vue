@@ -2,13 +2,14 @@
     <div class="sorteringsabc-items">
 
         <!--
-        Dummy header only for testing purpose 
+        Dummy header only for testing purpose
         -->
         <div class="container">
             <div class="row bg-primary">
                 <div class="col-md-12">
-                    <h1 class="text-white mt-4 mb-4">SORTERINGS ABC</h1>       
+                    <h1 class="text-white mt-4 mb-4">SORTERINGS ABC</h1>
                 </div>
+                <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Search …')" v-model="query.name" v-on:keyup="fetchItems">
             </div>
         </div>
         <!--
@@ -22,7 +23,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="input-search"><img v-bind:src='$config.assets.search' v-bind:alt="$t('Search')">{{ $t('Search') }}</span>
                         </div>
-                        <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Write garbagetype fx spray can')" v-model="query.name" v-on:keyup="fetchData">
+                        <input type="text" class="form-control form-control-lg" v-bind:placeholder="$t('Write garbagetype fx spray can')" v-model="query.name" v-on:keyup="fetchItems">
                     </div>
                 </div>
                 <div class="col-md-12 mt-1">
@@ -50,11 +51,11 @@
                         <div class="card-body">
                             <h3 class="card-title">{{ item.name }}</h3>
                             <span class="badge badge-primary">{{ item.description.name }}</span>
-                            <p class="card-text" v-if="item.description">                     
+                            <p class="card-text" v-if="item.description">
                                 <span v-html="item.description.description"></span>
                             </p>
                             <div class="row">
-                                <div v-if="item.allCategories" v-for="(category, index) in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2"> 
+                                <div v-if="item.allCategories" v-for="(category, index) in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2">
                                     <a v-bind:href="'#'+item.id+category.name" data-toggle="collapse" aria-expanded="false" v-bind:class="{active: category.active}">
                                         <img class="sorteringsabc-items-icon img-fluid" v-bind:class="category.icon" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
                                     </a>
@@ -89,47 +90,12 @@ Vue.mixin({
   }
 })
 
-// @TODO: Get this from API in the right order.
-const allCategories = [
-  {
-    "icon": "icon_restaffald",
-    "description": "",
-    "name": "Restaffald",
-    "@type": "ItemCategory",
-    "@id": "/api/item_categories/1",
-    "active": false
-  },
-  {
-    "icon": "icon_genbrugsbeholder_papir_pap",
-    "description": "",
-    "name": "Papir og småt pap",
-    "@type": "ItemCategory",
-    "@id": "/api/item_categories/2",
-    "active": false
-  },
-  {
-    "icon": "icon_genbrugsbeholder_glas_plast_metal",
-    "description": "",
-    "name": "Glas plast metal",
-    "@type": "ItemCategory",
-    "@id": "/api/item_categories/3",
-    "active": false
-  },
-  {
-    "icon": "icon_genbrugsbeholder_papir_pap",
-    "description": null,
-    "name": "Genbrugsstation",
-    "@type": "ItemCategory",
-    "@id": "/api/item_categories/4",
-    "active": false
-  },
-]
-
 export default {
   name: 'hearing-items',
   data () {
     return {
       loading: false,
+      allCategories: null,
       items: null,
       query: {
         name: ''
@@ -138,11 +104,28 @@ export default {
     }
   },
   created () {
-    this.fetchData()
+    // Load all categories
+    const self = this
+    fetch(this.$config.data_urls.item_categories)
+      .then(response => {
+        if (!response.ok) {
+          throw (response.statusText)
+        }
+        return response.json()
+      })
+      .then(data => {
+        self.allCategories = data['hydra:member']
+        self.allCategories.forEach((category) => {
+          delete category.items
+          category.active = false
+        })
+      })
+      .then(self.fetchItems)
+      .catch(error => { self.setData(error, null) })
   },
   methods: {
-    fetchData () {
-      let url = this.$config.data_url
+    fetchItems () {
+      let url = this.$config.data_urls.items
       if (this.query) {
         url += (url.indexOf('?') < 0 ? '?' : '&')
           +querystring.stringify(this.query);
@@ -169,18 +152,19 @@ export default {
       } else {
         this.data = data
         this.items = this.data['hydra:member']
-        // HACK! Merge item's selected categories into all categories.
-        this.items.forEach((item) => {
-          item.allCategories = allCategories.map((category) => {
-            for (var c of item.categories) {
-              if (c['@id'] === category['@id']) {
-                c.active = true
-                return c
+        if (this.allCategories) {
+          // Merge item's selected categories into all categories.
+          this.items.forEach((item) => {
+            item.allCategories = this.allCategories.map((category) => {
+              for (var c of item.categories) {
+                if (c['@id'] === category['@id']) {
+                  category.active = true
+                }
               }
-            }
-            return category
+              return category
+            })
           })
-        })
+        }
       }
     }
   }

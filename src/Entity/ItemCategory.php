@@ -26,7 +26,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     collectionOperations={"get"},
  *     itemOperations={"get"},
  *     normalizationContext={"groups"={"item_category_read"}},
- *     attributes={"order"={"name"}}
+ *     attributes={"order"={"id": "ASC"}}
  * )
  * @ApiFilter(SearchFilter::class, properties={"name": "partial"})
  * @ApiFilter(OrderFilter::class, properties={"name": "ASC"})

@@ -1,17 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% macro embed_head() %}
-<link rel="stylesheet" href="{{ absolute_url(path('app_embed_style')) }}"/>
+    <link rel="stylesheet" href="{{ absolute_url(path('app_embed_style')) }}"/>
 {% endmacro %}
 
 {% macro embed_markup(context) %}
-{% set app_configuration = {
-    data_url: absolute_url(path('api_items_get_collection')),
-    assets: context.assets
-} %}
-<div id="sorteringsabc-app" data-configuration='{{ app_configuration|json_encode|raw }}'></div>
-<script src="{{ absolute_url(path('app_embed_script')) }}"></script>
-<style>@import "{{ absolute_url(path('app_embed_style')) }}";</style>
+    {% set app_configuration = {
+        data_urls: {
+            items: absolute_url(path('api_items_get_collection')),
+            item_categories: absolute_url(path('api_item_categories_get_collection')),
+        },
+        assets: context.assets
+        } %}
+    <div id="sorteringsabc-app" data-configuration='{{ app_configuration|json_encode|raw }}'></div>
+    <script src="{{ absolute_url(path('app_embed_script')) }}"></script>
+    <style>@import "{{ absolute_url(path('app_embed_style')) }}";</style>
 {% endmacro %}
 
 {% block body %}
