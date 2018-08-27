@@ -61,6 +61,42 @@ Vue.mixin({
   }
 })
 
+// @TODO: Get this from API in the right order.
+const allCategories = [
+  {
+    "icon": "",
+    "description": "",
+    "name": "Restaffald",
+    "@type": "ItemCategory",
+    "@id": "/api/item_categories/1",
+    "active": false
+  },
+  {
+    "icon": "",
+    "description": "",
+    "name": "Papir og småt pap",
+    "@type": "ItemCategory",
+    "@id": "/api/item_categories/2",
+    "active": false
+  },
+  {
+    "icon": "",
+    "description": "",
+    "name": "Glas plast metal",
+    "@type": "ItemCategory",
+    "@id": "/api/item_categories/3",
+    "active": false
+  },
+  {
+    "icon": "icon_genbrugsbeholder_papir_pap",
+    "description": null,
+    "name": "Genbrugsstation",
+    "@type": "ItemCategory",
+    "@id": "/api/item_categories/4",
+    "active": false
+  },
+]
+
 export default {
   name: 'hearing-items',
   data () {
@@ -105,6 +141,18 @@ export default {
       } else {
         this.data = data
         this.items = this.data['hydra:member']
+        // HACK! Merge item's selected categories into all categories.
+        this.items.forEach((item) => {
+          item.allCategories = allCategories.map((category) => {
+            for (var c of item.categories) {
+              if (c['@id'] === category['@id']) {
+                c.active = true
+                return c
+              }
+            }
+            return category
+          })
+        })
       }
     }
   }
