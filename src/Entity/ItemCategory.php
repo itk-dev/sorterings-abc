@@ -41,6 +41,8 @@ class ItemCategory
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     *
+     * @Groups({"item_read", "item_category_read"})
      */
     private $id;
 
