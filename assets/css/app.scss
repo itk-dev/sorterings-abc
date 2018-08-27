@@ -129,4 +129,17 @@ $prefix: 'sorteringsabc';
         background: $white;
         border-bottom: 2px solid $gray-200
     }
+    .categories {
+        a {
+            img {
+                opacity: .15;
+                
+            }
+            &.active {
+                img {
+                    opacity: 1;
+                }
+            }
+        }
+    }
 }

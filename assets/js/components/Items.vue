@@ -69,9 +69,9 @@
                                         <span v-html="item.description.description"></span>
                                     </p>
                                     <div class="row">
-                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2"> 
+                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2 categories"> 
                                             <a v-bind:href="'#'+item.id+category.name" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">
-                                                <img class="sorteringsabc-items-icon img-fluid" v-bind:class="category.icon" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
+                                                <img class="sorteringsabc-items-icon img-fluid" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
                                             </a>
                                             <div class="collapse" v-bind:id="item.id+category.name">
                                                 <h4>{{ category.name }}</h4>
