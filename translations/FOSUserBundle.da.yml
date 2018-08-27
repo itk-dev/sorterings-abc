@@ -1,16 +1,23 @@
 change_password.submit: 'Skift adgangskode'
-profile.title: Title
+profile.title: Profil
 profile.show.email: E-mail
 resetting.request.submit: 'Nulstil adgangskode'
 resetting.check_email: 'Oplysninger om nulstilling af adgangskode sendt pr. e-mail'
 'Back to sign in': 'Tilbage til log ind'
 resetting.email.subject: 'Nulstilling af adgangskode'
-resetting.email.message: __resetting.email.message
+resetting.email.message:  |
+    Hej %username%
+
+    Gå til %confirmationUrl% for at nulstille din adgangskode.
+
+    Venlig hilsen
+    Sorterings-ABC
+
 resetting.password_already_requested: 'Du har allerede anmodet om nulstilling af din adgangskode'
 layout.back: Tilbage
 resetting.request.invalid_username: 'Ugyldigt brugernavn'
-resetting.request.username: Brugernavn
-security.login.username: Brugernavn
+resetting.request.username: E-mail
+security.login.username: E-mail
 security.login.submit: 'Log ind'
 security.login.password: Adgangskode
 resetting.reset.forgot: 'Glemt adgangskode'
