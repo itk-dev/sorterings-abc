@@ -173,6 +173,8 @@ export default {
           // Merge item's selected categories into all categories.
           this.items.forEach((item) => {
             item.allCategories = this.allCategories.map((category) => {
+              // Clone category
+              category = JSON.parse(JSON.stringify(category));
               for (var c of item.categories) {
                 if (c['@id'] === category['@id']) {
                   category.active = true
