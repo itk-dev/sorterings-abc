@@ -1,5 +1,9 @@
 {%- for category in value -%}
-    {% set show_url = path('easyadmin', {action: 'show', entity: 'ItemCategory', id: category.id, referer: app.request.requestUri}) %}
+    {# If in embedded list, referer should be that parent entity #}
+    {# @TODO: Find a way to get the parent entity #}
+    {% set is_embedded_list = app.request.query.get('action') == 'embeddedList' %}
+    {% set referer = not is_embedded_list ? app.request.requestUri %}
+    {% set show_url = path('easyadmin', {action: 'show', entity: 'ItemCategory', id: category.id, referer: referer}) %}
     {%- if not loop.first %}, {% endif -%}
     <a href="{{ show_url }}">{{ category.name }}</a>
 {%- else -%}

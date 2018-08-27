@@ -37,10 +37,7 @@ class AppController extends AbstractController
      */
     public function app()
     {
-        $assets = $this->parameters->get('app_assets');
-        array_walk_recursive($assets, function (&$path, $key) {
-            $path = $this->packages->getUrl($path);
-        });
+        $assets = $this->getAppAssets();
 
         return $this->render('app/app.html.twig', [
             'assets' => $assets,
@@ -52,7 +49,11 @@ class AppController extends AbstractController
      */
     public function embedCode()
     {
-        return $this->render('app/embed_code.html.twig');
+        $assets = $this->getAppAssets();
+
+        return $this->render('app/embed_code.html.twig', [
+            'assets' => $assets,
+        ]);
     }
 
     /**
@@ -73,5 +74,15 @@ class AppController extends AbstractController
         $url = $this->packages->getUrl('build/app.js');
 
         return $this->redirect($url);
+    }
+
+    private function getAppAssets()
+    {
+        $assets = $this->parameters->get('app_assets');
+        array_walk_recursive($assets, function (&$path, $key) {
+            $path = $this->packages->getUrl($path);
+        });
+
+        return $assets;
     }
 }

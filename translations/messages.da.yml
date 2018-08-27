@@ -11,3 +11,13 @@ Administration: Administration
 'API documentation': Api-dokumentation
 App: App
 'Embed code': Indlejringskode
+'Related items': 'Relaterede søgeord'
+User: Bruger
+Email: E-mail
+Roles: Roller
+Enabled: Aktiv
+Password: Adgangskode
+'This email is already in use.': 'Denne e-mail er allerede i brug.'
+ROLE_USER: Bruger
+ROLE_ADMIN: Administrator
+ROLE_SUPER_ADMIN: Superadministrator

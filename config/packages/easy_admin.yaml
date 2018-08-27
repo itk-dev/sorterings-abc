@@ -40,11 +40,16 @@ easy_admin:
                     - property: name
                       template: name.html.twig
                     - property: description
+                    - property: items
+                      label: 'Related items'
+                      template: items.html.twig
             show:
                 fields:
                     - property: name
                     - property: description
                     - property: items
+                      label: 'Related items'
+                      type: embedded_list
             form:
                 fields:
                     - property: name
@@ -62,12 +67,19 @@ easy_admin:
                     - property: description
                     - property: icon
                       template: icon.html.twig
+                    - property: items
+                      label: 'Related items'
+                      template: items.html.twig
             show:
                 fields:
                     - property: name
                     - property: description
                     - property: icon
                     - property: items
+                      label: 'Related items'
+                      type: embedded_list
+                      type_options:
+                          entity: Item
             form:
                 fields:
                     - property: name
@@ -79,3 +91,48 @@ easy_admin:
                           choices: '%icon_choices%'
                           expanded: true
                           multiple: false
+
+        User:
+            class: App\Entity\User
+            list:
+                role: ROLE_ADMIN
+                fields:
+                    - property: email
+                    - property: roles
+                      template: roles.html.twig
+                    - property: enabled
+                      type: boolean
+            show:
+                role: ROLE_ADMIN
+                fields:
+                    - property: enabled
+                    - property: email
+                    - property: roles
+            delete:
+                role: ROLE_ADMIN
+            form:
+                role: ROLE_ADMIN
+                fields:
+                    - property: enabled
+                    - property: email
+                    - property: roles
+                      type: choice
+                      type_options: &role_type_options
+                          multiple: true
+                          expanded: true
+                          choices:
+                              ROLE_USER: ROLE_USER
+                              ROLE_ADMIN: ROLE_ADMIN
+                    - property: enabled
+            new:
+                role: ROLE_ADMIN
+                fields:
+                    - property: plainPassword
+                      label: Password
+                      type_options:
+                          required: true
+                      type: text
+
+easy_admin_extension:
+    embedded_list:
+        open_new_tab: false

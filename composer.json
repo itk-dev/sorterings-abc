@@ -5,6 +5,7 @@
         "php": "~7.2.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "alterphp/easyadmin-extension-bundle": "dev-master",
         "api-platform/api-pack": "^1.1",
         "easycorp/easyadmin-bundle": "^1.17",
         "friendsofsymfony/ckeditor-bundle": "^1.1",
@@ -105,6 +106,12 @@
         "symfony": {
             "allow-contrib": false,
             "require": "4.1.*"
+        }
+    },
+    "repositories": {
+        "alterphp/easyadmin-extension-bundle": {
+            "type": "vcs",
+            "url": "https://github.com/rimi-itk/EasyAdminExtensionBundle.git"
         }
     }
 }

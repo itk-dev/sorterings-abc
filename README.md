@@ -22,7 +22,7 @@ bin/console doctrine:migrations:migrate --no-interaction
 ```sh
 bin/console fos:user:create --super-admin super-admin@example.com super-admin@example.com super-admin-password
 bin/console fos:user:create admin@example.com admin@example.com admin-password
-bin/console fos:user:promote admin ROLE_ADMIN
+bin/console fos:user:promote admin@example.com ROLE_ADMIN
 ```
 
 ## Development

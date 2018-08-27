@@ -1,5 +1,0 @@
-{% set route = app.request.attributes.get('_route') %}
-{% set route_query = app.request.query.all %}
-{% set show_url = path(route, route_query|merge({action: 'show', 'id': item.id, referer: app.request.requestUri})) %}
-
-<a href="{{ show_url }}">{{ value }}</a>
