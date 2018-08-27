@@ -4,6 +4,8 @@ import Vue from 'vue'
 import makeI18n from './i18n'
 import Items from './components/Items'
 const container = document.getElementById('sorteringsabc-app')
+const $ = require('jquery');
+require('bootstrap/js/dist/collapse');
 
 if (container !== null) {
     const config = JSON.parse(container.getAttribute('data-configuration'))

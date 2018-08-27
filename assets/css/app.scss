@@ -97,12 +97,18 @@ $card-inner-border-radius: 0;
 $prefix: 'sorteringsabc';
 
 .#{$prefix}-items {
+    .bg-petroleum-light {
+        background-color: $petroleum-light;
+    }
+    .bg-gray-light {
+        background-color: $gray-100;
+    }
     &-search {
         input[type="text"],
         select.form-control {
-            background: transparent;
+            background: $white;
             border: none;
-            border-bottom: 2px solid $primary;
+            border-bottom: 1px solid $primary;
             -webkit-box-shadow: none;
             box-shadow: none;
             border-radius: 0;
@@ -112,21 +118,20 @@ $prefix: 'sorteringsabc';
         select.form-control:focus {
             -webkit-box-shadow: none;
             box-shadow: none;
+            color: $dark;
+        }
+        .input-group-text {
+            background-color: darken($petroleum-light, 10%);
+            border-width: 0;
+            padding: 0 $spacer/2;
+            color: $dark;
+            img {
+                width: 1.5rem;
+            }
         }
     }
-    .#{$prefix}-item {
-        padding: 1em;
-        margin: 1em 0;
-    }
-
-    .#{$prefix}-item-description,
-    .#{$prefix}-item-category {
-        border: solid 1px #eee;
-        padding: 1em;
-        margin: 1em 0;
-    }
-
-    .#{$prefix}-name {
-        font-weight: bold;
+    .card {
+        background: $white;
+        border-bottom: 2px solid $gray-200
     }
 }

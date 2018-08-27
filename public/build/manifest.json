@@ -1,7 +1,11 @@
 {
-  "build/admin.js": "/build/admin.c1a35619.js",
-  "build/app.css": "/build/app.07efa696.css",
-  "build/app.js": "/build/app.c66f8ea7.js",
+  "build/admin.js": "/build/admin.85b2e7cf.js",
+  "build/app.css": "/build/app.6be95681.css",
+  "build/app.js": "/build/app.10d6ff21.js",
   "build/images/favicon.ico": "/build/images/favicon.b4f24cc7.ico",
-  "build/images/search.svg": "/build/images/search.e7caffac.svg"
+  "build/images/genbrugsplads.jpg": "/build/images/genbrugsplads.5f4b8395.jpg",
+  "build/images/glasplastmetal.jpg": "/build/images/glasplastmetal.83e2dac8.jpg",
+  "build/images/papirpap.jpg": "/build/images/papirpap.77447613.jpg",
+  "build/images/restaffald.jpg": "/build/images/restaffald.cad476b4.jpg",
+  "build/images/search.svg": "/build/images/search.843c2ecb.svg"
 }
