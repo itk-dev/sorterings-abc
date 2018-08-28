@@ -127,7 +127,10 @@ $prefix: 'sorteringsabc';
     }
     .card {
         background: $white;
-        border-bottom: 2px solid $gray-200
+        border-bottom: 2px solid $gray-200;
+        .card-body {
+            height: 100%;
+        }
     }
     .categories {
         a {
@@ -137,7 +140,7 @@ $prefix: 'sorteringsabc';
             position: relative;
             img {
                 opacity: .15;
-                
+                width: 100%;
             }
             &.active {
                 img {
