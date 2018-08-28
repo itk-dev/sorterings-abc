@@ -42,7 +42,7 @@
                             <div class="alert alert-light" v-if="items && items.length === 0">
                                 <h4 class="alert-heading">{{ $t('No items starting with "{name}"', {name: query.name}) }}</h4>
                                 <p>{{ $t('Please consider adding the missing keyword to this list') }}</p>
-                                <button href="https://www2.aarhus.dk/affaldvarme/affald-og-genbrug/sortering-derhjemme/sorteringsguide/giv-os-feedback/" class="btn btn-primary btn-small">{{ $t('Add a missing keyword') }}</button>
+                                <a role="button" href="https://www2.aarhus.dk/affaldvarme/affald-og-genbrug/sortering-derhjemme/sorteringsguide/giv-os-feedback/" class="btn btn-primary btn-small">{{ $t('Add a missing keyword') }}</a>
                             </div>
                         </div>
                     </div>
