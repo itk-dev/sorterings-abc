@@ -49,12 +49,12 @@
                 </div>
             </div>
             <div class="row bg-gray-light pb-3">
-                <div class="container">
+                <div class="container" v-if="items">
                     <div class="row">
                         <div class="col-md-12">
-                            <p class="text-muted mb-1 mt-1" v-if="items" >{{ $t('Results') }} ({{ items.length }})</p>
+                            <p class="text-muted mb-1 mt-1">{{ $t('Results') }} ({{ items.length }})</p>
                         </div>
-                        <div class="col-md-12 sorteringsabc-item mb-3" v-if="items" v-for="item in items" v-bind:key="item.id">
+                        <div class="col-md-12 sorteringsabc-item mb-3" v-for="item in items" v-bind:key="item.id">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
@@ -68,12 +68,14 @@
                                     <p class="card-text" v-if="item.description">
                                         <span v-html="item.description.description"></span>
                                     </p>
-                                    <div class="row">
-                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category['@id']" class="col-3 col-md-2 categories">
+                                    <div class="row" v-bind:id="getUniqueId(item.name)">
+                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category.id" class="col-3 col-md-2 categories" >
                                             <a v-bind:href="'#'+getUniqueId(item.name, category.name)" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">
                                                 <img class="sorteringsabc-items-icon img-fluid" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
                                             </a>
-                                            <div class="collapse" v-bind:id="getUniqueId(item.name, category.name)">
+                                        </div>
+                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="getUniqueId(item.name, category.name)" class="col-12 categories-description">
+                                            <div class="collapse mt-2" v-bind:id="getUniqueId(item.name, category.name)"  v-bind:data-parent="'#'+getUniqueId(item.name)">
                                                 <h4>{{ category.name }}</h4>
                                                 <div class="sorteringsabc-description" v-html="category.description">
                                                 </div>
