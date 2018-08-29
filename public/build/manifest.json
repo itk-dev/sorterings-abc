@@ -1,5 +1,5 @@
 {
-  "build/admin.js": "/build/admin.cb962070.js",
+  "build/admin.js": "/build/admin.d5455678.js",
   "build/app.css": "/build/app.11621838.css",
   "build/app.js": "/build/app.7154cc5e.js",
   "build/images/apple-touch-icon-114x114.png": "/build/images/apple-touch-icon-114x114.dcf1e7ef.png",
@@ -17,14 +17,14 @@
   "build/images/favicon-96x96.png": "/build/images/favicon-96x96.fe05ed55.png",
   "build/images/favicon.ico": "/build/images/favicon.7a9337d2.ico",
   "build/images/favicon.png": "/build/images/favicon.50688e5c.png",
-  "build/images/genbrugsplads.jpg": "/build/images/genbrugsplads.5f4b8395.jpg",
-  "build/images/glasplastmetal.jpg": "/build/images/glasplastmetal.83e2dac8.jpg",
+  "build/images/genbrugsplads.png": "/build/images/genbrugsplads.7d81e8f3.png",
+  "build/images/glasplastmetal.png": "/build/images/glasplastmetal.7f24c814.png",
   "build/images/mstile-144x144.png": "/build/images/mstile-144x144.f2a1b3fb.png",
   "build/images/mstile-150x150.png": "/build/images/mstile-150x150.47715c61.png",
   "build/images/mstile-310x150.png": "/build/images/mstile-310x150.d64b9f53.png",
   "build/images/mstile-310x310.png": "/build/images/mstile-310x310.a68defe0.png",
   "build/images/mstile-70x70.png": "/build/images/mstile-70x70.02265d91.png",
-  "build/images/papirpap.jpg": "/build/images/papirpap.77447613.jpg",
-  "build/images/restaffald.jpg": "/build/images/restaffald.cad476b4.jpg",
+  "build/images/papirpap.png": "/build/images/papirpap.c4f24eb4.png",
+  "build/images/restaffald.png": "/build/images/restaffald.bb28af02.png",
   "build/images/search.svg": "/build/images/search.843c2ecb.svg"
 }
