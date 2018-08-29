@@ -18,7 +18,7 @@
         -->
 
         <div class="container-fluid">
-            <div class="row bg-petroleum-light">
+            <div class="row bg-petroleum-light sticky-top">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 mt-4 mb-3">
