@@ -30,14 +30,22 @@
         <meta name="msapplication-square310x310logo" content="{{ asset('build/images/mstile-310x310.png') }}" />
     </head>
     <body>
-        {% set app_configuration = {
-            data_urls: {
-                items: absolute_url(path('api_items_get_collection')),
-                item_categories: absolute_url(path('api_item_categories_get_collection')),
-            },
-            assets: assets
-            } %}
-        <div id="sorteringsabc-app" data-configuration="{{ app_configuration|json_encode }}"></div>    
-        <script src="{{ asset('build/app.js') }}"></script>
+        {% block body %}
+            <div class="container-fluid">
+                <div class="row bg-primary">
+                    <div class="container">
+                        <div class="col-md-12">
+                            <h1 class="text-white mt-4 mb-4">{{ site_name }}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if app.request.query.has('embed') %}
+                {% include 'app/include/_embed_code.html.twig' %}
+            {% else %}
+                <iframe src="{{ path('app_iframe') }}"></iframe>
+            {% endif %}
+        {% endblock %}
     </body>
 </html>

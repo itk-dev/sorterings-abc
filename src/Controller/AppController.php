@@ -45,6 +45,30 @@ class AppController extends AbstractController
     }
 
     /**
+     * @Route("/iframe", name="app_iframe")
+     */
+    public function iframe()
+    {
+        $assets = $this->getAppAssets();
+
+        return $this->render('app/iframe.html.twig', [
+            'assets' => $assets,
+        ]);
+    }
+
+    /**
+     * @Route("/embed", name="app_embed")
+     */
+    public function embed()
+    {
+        $assets = $this->getAppAssets();
+
+        return $this->render('app/embed.html.twig', [
+            'assets' => $assets,
+        ]);
+    }
+
+    /**
      * @Route("/embed/code", name="app_embed_code")
      */
     public function embedCode()

@@ -128,6 +128,12 @@ export default {
       return /^[^a-z]/i.test(id) ? 'c--'+id : id;
     },
     fetchItems () {
+      // Don't search if query is empty.
+      if (this.query.name.length <= 0) {
+        this.error = this.items = null
+        return
+      }
+
       let url = this.$config.data_urls.items
       if (this.query) {
         url += (url.indexOf('?') < 0 ? '?' : '&')
