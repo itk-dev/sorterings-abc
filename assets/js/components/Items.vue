@@ -1,22 +1,5 @@
 <template>
     <div class="sorteringsabc-items">
-
-        <!--
-        Dummy header only for testing purpose
-        -->
-        <div class="container-fluid">
-            <div class="row bg-primary">
-                <div class="container">
-                    <div class="col-md-12">
-                        <h1 class="text-white mt-4 mb-4">SORTERINGS ABC</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--
-        END header
-        -->
-
         <div class="container-fluid">
             <div class="row bg-petroleum-light sticky-top">
                 <div class="container">
@@ -63,9 +46,9 @@
                                     </p>
                                     <div class="row" v-bind:id="getUniqueId(item.name)">
                                         <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category.id" class="col-3 col-md-2 categories" >
-                                            <a v-bind:href="'#'+getUniqueId(item.name, category.name)" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">
+                                            <!-- HIDE UNTIL CATEGORY DESCRIPTIONS ARE READY <a v-bind:href="'#'+getUniqueId(item.name, category.name)" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">-->
                                                 <img class="sorteringsabc-items-icon img-fluid" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
-                                            </a>
+                                             <!-- HIDE UNTIL CATEGORY DESCRIPTIONS ARE READY </a>-->
                                         </div>
                                         <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="getUniqueId(item.name, category.name)" class="col-12 categories-description">
                                             <div class="collapse mt-2" v-bind:id="getUniqueId(item.name, category.name)"  v-bind:data-parent="'#'+getUniqueId(item.name)">
@@ -75,7 +58,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="text-muted mt-2 mb-0">{{ $t('Click on icon to see extended description') }}</p>
+                                     <!-- HIDE UNTIL CATEGORY DESCRIPTIONS ARE READY <p class="text-muted mt-2 mb-0">{{ $t('Click on icon to see extended description') }}</p>-->
                                 </div>
                             </div>
                         </div>
