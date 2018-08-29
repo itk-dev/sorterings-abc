@@ -6,4 +6,5 @@
     assets: assets
     } %}
 <div id="sorteringsabc-app" data-configuration="{{ app_configuration|json_encode }}"></div>
-<script src="{{ asset('build/app.js') }}"></script>
+<script src="{{ absolute_url(asset('build/app.js')) }}"></script>
+<link rel="stylesheet" href="{{ absolute_url(asset('build/app.css')) }}"/>
