@@ -13,6 +13,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Asset\Packages;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -26,10 +27,14 @@ class AppController extends AbstractController
     /** @var \Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface */
     private $parameters;
 
-    public function __construct(Packages $packages, ParameterBagInterface $parameters)
+    /** @var \Symfony\Component\HttpFoundation\RequestStack */
+    private $requestStack;
+
+    public function __construct(Packages $packages, ParameterBagInterface $parameters, RequestStack $requestStack)
     {
         $this->packages = $packages;
         $this->parameters = $parameters;
+        $this->requestStack = $requestStack;
     }
 
     /**
@@ -100,11 +105,15 @@ class AppController extends AbstractController
         return $this->redirect($url);
     }
 
+    /**
+     * Get absolute app assets.
+     */
     private function getAppAssets()
     {
+        $request = $this->requestStack->getCurrentRequest();
         $assets = $this->parameters->get('app_assets');
-        array_walk_recursive($assets, function (&$path, $key) {
-            $path = $this->packages->getUrl($path);
+        array_walk_recursive($assets, function (&$path, $key) use ($request) {
+            $path = $request->getSchemeAndHttpHost().$this->packages->getUrl($path);
         });
 
         return $assets;
