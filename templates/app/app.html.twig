@@ -44,7 +44,15 @@
             {% if app.request.query.has('embed') %}
                 {% include 'app/include/_embed_code.html.twig' %}
             {% else %}
-                <iframe src="{{ path('app_iframe') }}"></iframe>
+                <iframe src="{{ path('app_iframe') }}" id="sorteringsabciframe" scrolling="no"></iframe>
+                <script>
+                    window.addEventListener('message', function(e) {
+                        // message passed can be accessed in "data" attribute of the event object
+                        var scroll_height = e.data;
+
+                        document.getElementById('sorteringsabciframe').style.height = scroll_height + 'px'; 
+                    } , false);
+                </script>
             {% endif %}
         {% endblock %}
     </body>

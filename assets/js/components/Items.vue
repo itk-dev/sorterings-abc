@@ -47,7 +47,9 @@
                                     <div class="row" v-bind:id="getUniqueId(item.name)">
                                         <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category.id" class="col-3 col-md-2 categories" >
                                             <!-- HIDE UNTIL CATEGORY DESCRIPTIONS ARE READY <a v-bind:href="'#'+getUniqueId(item.name, category.name)" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">-->
+                                                <span v-bind:class="{ active: category.active }">
                                                 <img class="sorteringsabc-items-icon img-fluid" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>
+                                                </span>
                                              <!-- HIDE UNTIL CATEGORY DESCRIPTIONS ARE READY </a>-->
                                         </div>
                                         <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="getUniqueId(item.name, category.name)" class="col-12 categories-description">
@@ -68,8 +70,16 @@
         </div>
     </div>
 </template>
-
 <script>
+
+setInterval(function() {
+    // first parameter is the message to be passed
+    // second paramter is the domain of the parent 
+    // in this case "*" has been used for demo sake (denoting no preference)
+    // in production always pass the target domain for which the message is intended 
+    window.top.postMessage(document.body.scrollHeight, "*");
+}, 500);
+
 // https://codeburst.io/dependency-injection-with-vue-js-f6b44a0dae6d
 import Vue from 'vue'
 const querystring = require('querystring')

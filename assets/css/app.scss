@@ -87,6 +87,26 @@ $card-inner-border-radius: 0;
 @import "~bootstrap/scss/bootstrap";
 
 /*
+** Set html, body height 100%;
+*/
+html, body {
+    height: 100%;
+    background-color: $gray-100;
+}
+
+/*
+** Iframe styling
+*/
+iframe#sorteringsabciframe {
+    width: 1px;
+    min-width: 100%;
+    height: 100%;
+    min-height: 1px;
+    border: 0;
+}
+
+
+/*
 ** Styling modifications to bootstrap default
 */
 $prefix: 'sorteringsabc';
@@ -133,7 +153,7 @@ $prefix: 'sorteringsabc';
         }
     }
     .categories {
-        a {
+        span {
             display: inline-block;
             border-radius: .4rem;
             overflow: hidden;
