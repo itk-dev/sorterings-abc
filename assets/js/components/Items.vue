@@ -57,14 +57,7 @@
                         <div class="col-md-12 sorteringsabc-item mb-3" v-for="item in items" v-bind:key="item.id">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h3 class="card-title">{{ item.name }}</h3>
-                                        </div>
-                                        <div class="col">
-                                            <span class="badge badge-primary float-right">{{ item.description.name }}</span>
-                                        </div>
-                                    </div>
+                                    <h3 class="card-title">{{ item.name }}</h3>
                                     <p class="card-text" v-if="item.description">
                                         <span v-html="item.description.description"></span>
                                     </p>
