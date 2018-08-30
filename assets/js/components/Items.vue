@@ -36,7 +36,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="alert alert-light mt-2">
-                                <p class="text-primary mb-1 mt-1">{{ $t('Er du i tvivl om, hvor en bestemt affaldstype skal hen, kan du søge her. Kan du ikke finde det, du leder efter – så prøv at søge på noget lignende.') }}</p>
+                                <p class="text-dark mb-1 mt-1">{{ $t('Er du i tvivl om, hvor en bestemt affaldstype skal hen, kan du søge her. Kan du ikke finde det, du leder efter – så prøv at søge på noget lignende.') }}</p>
                             </div>
                         </div>
                     </div>

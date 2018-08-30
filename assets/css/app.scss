@@ -151,8 +151,11 @@ $prefix: 'sorteringsabc';
     .card {
         background: $white;
         border-bottom: 2px solid $gray-200;
+        height: 100%;
+        display: block;
         .card-body {
             height: 100%;
+            display: block;
         }
         .card-title {
             font-weight: 900;
