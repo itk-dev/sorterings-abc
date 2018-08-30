@@ -23,15 +23,24 @@
                                 {{ error }}
                             </div>
                             <div class="alert alert-light" v-if="items && items.length === 0">
-                                <h4 class="alert-heading">{{ $t('No items starting with "{name}"', {name: query.name}) }}</h4>
-                                <p>{{ $t('Please consider adding the missing keyword to this list') }}</p>
-                                <a role="button" href="https://www2.aarhus.dk/affaldvarme/affald-og-genbrug/sortering-derhjemme/sorteringsguide/giv-os-feedback/" class="btn btn-primary btn-small">{{ $t('Add a missing keyword') }}</a>
+                                <h4 class="alert-heading text-dark">{{ $t('No suggestions') }}</h4>
+                                <p class="text-dark">{{ $t('Please consider adding the missing keyword to this list') }}</p>
+                                <a role="button" href="https://www2.aarhus.dk/affaldvarme/affald-og-genbrug/sortering-derhjemme/sorteringsguide/giv-os-feedback/" class="btn btn-primary btn-small" target="_parent">{{ $t('Add a missing keyword') }}</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row bg-gray-light pb-3">
+                <div class="container" v-if="!items">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-light mt-2">
+                                <p class="text-primary mb-1 mt-1">{{ $t('Er du i tvivl om, hvor en bestemt affaldstype skal hen, kan du søge her. Kan du ikke finde det, du leder efter – så prøv at søge på noget lignende.') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="container" v-if="items">
                     <div class="row">
                         <div class="col-md-12">
@@ -45,7 +54,7 @@
                                         <span v-html="item.description.description"></span>
                                     </p>
                                     <div class="row" v-bind:id="getUniqueId(item.name)">
-                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category.id" class="col-3 col-md-2 categories" >
+                                        <div v-if="item.allCategories" v-for="category in item.allCategories" v-bind:key="category.id" class="col-3 col-md-2 col-lg-1 categories" >
                                             <!-- HIDE UNTIL CATEGORY DESCRIPTIONS ARE READY <a v-bind:href="'#'+getUniqueId(item.name, category.name)" data-toggle="collapse" aria-expanded="false" v-bind:class="{ active: category.active }">-->
                                                 <span v-bind:class="{ active: category.active }">
                                                 <img class="sorteringsabc-items-icon img-fluid" v-bind:src="$config.assets[category.icon]" v-bind:alt="category.name"/>

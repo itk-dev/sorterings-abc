@@ -112,6 +112,9 @@ iframe#sorteringsabciframe {
 $prefix: 'sorteringsabc';
 
 .#{$prefix}-items {
+    .alert-heading {
+        font-weight: 900;
+    }
     .bg-petroleum-light {
         background-color: $petroleum-light;
     }
@@ -151,6 +154,9 @@ $prefix: 'sorteringsabc';
         .card-body {
             height: 100%;
         }
+        .card-title {
+            font-weight: 900;
+        }
     }
     .categories {
         span {
@@ -159,7 +165,7 @@ $prefix: 'sorteringsabc';
             overflow: hidden;
             position: relative;
             img {
-                opacity: .15;
+                opacity: .08;
                 width: 100%;
             }
             &.active {

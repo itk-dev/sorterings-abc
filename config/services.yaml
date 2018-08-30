@@ -16,10 +16,10 @@ parameters:
     # Assets for use in app
     app_assets:
         search: build/images/search.svg
-        icon_restaffald: build/images/restaffald.png
-        icon_genbrugsbeholder_papir_pap: build/images/papirpap.png
-        icon_genbrugsbeholder_glas_plast_metal: build/images/glasplastmetal.png
-        icon_genbrugsstation: build/images/genbrugsplads.png
+        icon_restaffald: build/images/restaffald.svg
+        icon_genbrugsbeholder_papir_pap: build/images/papirpap.svg
+        icon_genbrugsbeholder_glas_plast_metal: build/images/glasplastmetal.svg
+        icon_genbrugsstation: build/images/genbrugsplads.svg
 
 services:
     # default configuration for services in *this* file

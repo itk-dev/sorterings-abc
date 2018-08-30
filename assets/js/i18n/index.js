@@ -11,10 +11,11 @@ const messages = {
     'Loading items …': 'Henter resultater …',
     'No items starting with "{name}"': 'Ingen items starter med {name}',
     'Write garbagetype fx spray can': 'Skriv affaldstype f.eks spraydåse',
-    'Please consider adding the missing keyword to this list':'Søgeordret kan ikke findes. Du kan få det tilføjet til listen ved at indsende det.',
-    'Add a missing keyword':'Indsend et søgeord',
+    'Please consider adding the missing keyword to this list':'Findes dit søgeord ikke i listen kan du sende det til os.',
+    'Add a missing keyword':'Indsend søgeord',
     'Results':'Resultater',
-    'Click on icon to see extended description':'Klik på ikonet for at se beskrivelse'
+    'Click on icon to see extended description':'Klik på ikonet for at se beskrivelse',
+    'No suggestions':'Ingen forslag.'
   },
   en: {
     'Search': 'Search',
