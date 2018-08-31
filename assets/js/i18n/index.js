@@ -15,7 +15,7 @@ const messages = {
     'Add a missing keyword':'Indsend søgeord',
     'Results':'Resultater',
     'Click on icon to see extended description':'Klik på ikonet for at se beskrivelse',
-    'No suggestions':'Ingen forslag.'
+    'No suggestions':'Ingen forslag'
   },
   en: {
     'Search': 'Search',
