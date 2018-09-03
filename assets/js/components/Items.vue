@@ -25,7 +25,7 @@
                             <div class="alert alert-light" v-if="items && items.length === 0">
                                 <h4 class="alert-heading text-dark">{{ $t('No suggestions') }}</h4>
                                 <p class="text-dark">{{ $t('Please consider adding the missing keyword to this list') }}</p>
-                                <a role="button" href="https://www2.aarhus.dk/affaldvarme/affald-og-genbrug/sortering-derhjemme/sorteringsguide/giv-os-feedback/" class="btn btn-primary btn-small" target="_parent">{{ $t('Add a missing keyword') }}</a>
+                                <a role="button" href="https://affaldvarme.aarhus.dk/affald-og-genbrug/sortering-derhjemme/sorteringsguide/send-os-dit-forslag/" class="btn btn-primary btn-small" target="_parent">{{ $t('Add a missing keyword') }}</a>
                             </div>
                         </div>
                     </div>
