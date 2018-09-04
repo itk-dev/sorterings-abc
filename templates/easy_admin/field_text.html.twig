@@ -1,6 +1,6 @@
 {# '@EasyAdmin/default/field_text.html.twig' with html_entity_decode #}
 {% if view == 'show' %}
-    {{ value|nl2br|raw }}
+    {{ value|html_entity_decode|raw }}
 {% else %}
     {{ value|html_entity_decode|striptags|easyadmin_truncate }}
 {% endif %}
