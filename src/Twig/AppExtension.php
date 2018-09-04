@@ -18,7 +18,12 @@ class AppExtension extends AbstractExtension
     public function getFilters()
     {
         return [
-            new TwigFilter('html_entity_decode', 'html_entity_decode'),
+            new TwigFilter('html_entity_decode', [$this, 'htmlEntityDecode']),
         ];
+    }
+
+    public function htmlEntityDecode($string)
+    {
+        return html_entity_decode($string, ENT_QUOTES | ENT_HTML5);
     }
 }
