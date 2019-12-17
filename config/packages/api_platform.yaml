@@ -2,6 +2,10 @@ api_platform:
     title: '%site_name%'
     version: '%api_version%'
 
+    collection:
+        pagination:
+            client_enabled: true
+
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
 
